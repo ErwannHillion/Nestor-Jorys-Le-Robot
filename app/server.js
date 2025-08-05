@@ -11,11 +11,13 @@ app.get('/', (req, res) => {
 
 app.get('/action', (req, res) => {
     const moves = ["UP", "DOWN", "LEFT", "RIGHT", "STAY"];
+    const actions = ["COLLECT", "BOMB", "NONE"];
 
     const randomMove = moves[Math.floor(Math.random() * moves.length)];
-
+    const randomAction = actions[Math.floor(Math.random() * actions.length)];
     res.json({
-        "move": randomMove
+        "move": randomMove,
+        "action": randomAction
     });
 });
 
