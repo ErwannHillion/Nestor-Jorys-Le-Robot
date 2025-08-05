@@ -1,57 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Bot Controller</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(3, 80px);
+      gap: 5px;
+      justify-content: center;
+      margin: 20px;
+    }
+
+    .btn {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #333;
+      background: #f0f0f0;
+      cursor: pointer;
+    }
+
+    .actions {
+      margin: 20px;
+    }
+
+    .actions .btn {
+      margin: 5px;
+    }
+
+    form {
+      display: inline;
+    }
+  </style>
 </head>
-<style>
-  body {
-    background-color: #000;
-  }
-
-  .wrapper {
-    height: 100vh;
-    /*This part is important for centering*/
-    display: grid;
-    place-items: center;
-  }
-
-  .typing-demo {
-    width: 36ch;
-    animation: typing 6s steps(36), blink .9s step-end infinite alternate;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid;
-    font-family: monospace;
-    font-size: 2em;
-    color: #23ff00;
-  }
-
-  @keyframes typing {
-    from {
-      width: 0
-    }
-  }
-
-  @keyframes blink {
-    50% {
-      border-color: transparent
-    }
-  }
-</style>
 
 <body>
-  <div class="wrapper">
-    <div class="typing-demo">
-      Wake up, Neo... ChatGPT Has You...
-    </div>
+  <h1>Bot Controller</h1>
+
+  <div class="controls">
+    <div></div>
+    <form method="POST" action="/set-move">
+      <input type="hidden" name="move" value="UP">
+      <button type="submit" class="btn">UP</button>
+    </form>
+    <div></div>
+
+    <form method="POST" action="/set-move">
+      <input type="hidden" name="move" value="LEFT">
+      <button type="submit" class="btn">LEFT</button>
+    </form>
+    <form method="POST" action="/set-move">
+      <input type="hidden" name="move" value="STAY">
+      <button type="submit" class="btn">STAY</button>
+    </form>
+    <form method="POST" action="/set-move">
+      <input type="hidden" name="move" value="RIGHT">
+      <button type="submit" class="btn">RIGHT</button>
+    </form>
+
+    <div></div>
+    <form method="POST" action="/set-move">
+      <input type="hidden" name="move" value="DOWN">
+      <button type="submit" class="btn">DOWN</button>
+    </form>
+    <div></div>
+  </div>
+
+  <div class="actions">
+    <form method="POST" action="/set-action">
+      <input type="hidden" name="action" value="COLLECT">
+      <button type="submit" class="btn">COLLECT</button>
+    </form>
+    <form method="POST" action="/set-action">
+      <input type="hidden" name="action" value="BOMB">
+      <button type="submit" class="btn">BOMB</button>
+    </form>
+    <form method="POST" action="/set-action">
+      <input type="hidden" name="action" value="NONE">
+      <button type="submit" class="btn">NONE</button>
+    </form>
   </div>
 </body>
-<script>
-  var audio = document.getElementsByTagName("audio")[0];
-  audio.play();
-</script>
 
 </html>
