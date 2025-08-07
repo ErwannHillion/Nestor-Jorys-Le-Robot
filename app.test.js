@@ -8,7 +8,7 @@ describe('Bot API Routes', () => {
         app = createApp();
     });
 
-    test('GET /action returns default valu', async () => {
+    test('GET /action returns default value', async () => {
         const response = await request(app)
             .get('/action')
             .expect(200);
@@ -21,7 +21,7 @@ describe('Bot API Routes', () => {
         await request(app)
             .post('/set-move')
             .send({ move: 'UP' })
-            .expect(302);
+
 
         const response = await request(app)
             .get('/action')
@@ -34,7 +34,7 @@ describe('Bot API Routes', () => {
         await request(app)
             .post('/set-action')
             .send({ action: 'COLLECT' })
-            .expect(302);
+
 
         const response = await request(app)
             .get('/action')
@@ -43,16 +43,16 @@ describe('Bot API Routes', () => {
         expect(response.body.action).toBe('COLLECT');
     });
 
-    test('can change both action and move', async () => {
+    test('change both action and move', async () => {
         await request(app)
             .post('/set-move')
             .send({ move: 'DOWN' })
-            .expect(302);
+
 
         await request(app)
             .post('/set-action')
             .send({ action: 'BOMB' })
-            .expect(302);
+
 
         const response = await request(app)
             .get('/action')

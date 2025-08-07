@@ -40,16 +40,5 @@ function createApp() {
 
     return app;
 }
-const app = createApp();
-
-// Permet de determiner si le fichier est execute directement ou importer
-if (require.main === module) {
-    const app = createApp();
-    const port = 3000;
-
-    app.listen(port, () => {
-        console.log(`Server running on port ${port}`);
-    });
-}
 
 module.exports = createApp;
