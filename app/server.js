@@ -40,9 +40,10 @@ function createApp() {
 
     return app;
 }
+
+module.exports = createApp;
+
 const app = createApp();
 app.listen(port, () => {
     console.log(`bot start on ${port}`);
 });
-
-module.exports = createApp;
