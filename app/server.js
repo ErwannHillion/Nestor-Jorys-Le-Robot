@@ -2,9 +2,10 @@ const express = require('express');
 
 const cors = require('cors');
 
+const port = 3000;
+
 function createApp() {
 
-    const port = 3000;
     const app = express();
 
     app.use(cors());
@@ -37,8 +38,12 @@ function createApp() {
         res.redirect('/');
     });
 
-
     return app;
 }
 
 module.exports = createApp;
+
+const app = createApp();
+app.listen(port, () => {
+    console.log(`bot start on ${port}`);
+});
